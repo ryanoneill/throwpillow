@@ -4,6 +4,7 @@ class Client:
     def __init__(self):
         # TODO: Be able to change the model fully
         # TODO: Be able to change the max tokens fully
+        # TODO: Be able to handle when the API Key has not been loaded.
         self.inner = Anthropic()
         self.model = "claude-3-haiku-20240307"
         self.max_tokens = 1000
