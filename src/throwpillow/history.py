@@ -1,5 +1,5 @@
-from throwpillow.message import Message, ClaudeMessage, UserMessage
 from typing import List
+from .message import Message, ClaudeMessage, UserMessage
 
 class HistoryException(Exception):
     def __init__(self, message: str):
