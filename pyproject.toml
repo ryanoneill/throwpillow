@@ -9,3 +9,7 @@ dependencies = [
     "dotenv>=0.9.9",
 ]
 classifiers = ["Private :: Do Not Upload"]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
