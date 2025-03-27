@@ -14,7 +14,11 @@ classifiers = ["Private :: Do Not Upload"]
 venvPath = "."
 venv = ".venv"
 
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
 [dependency-groups]
 dev = [
     "ipython>=9.0.2",
+    "pytest>=8.3.5",
 ]
