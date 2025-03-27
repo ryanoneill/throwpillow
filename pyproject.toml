@@ -13,3 +13,8 @@ classifiers = ["Private :: Do Not Upload"]
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
+
+[dependency-groups]
+dev = [
+    "ipython>=9.0.2",
+]
