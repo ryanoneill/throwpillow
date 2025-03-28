@@ -1,4 +1,4 @@
-from typing import List
+from typing import Dict, List
 from .message import Message, ClaudeMessage, UserMessage
 
 class HistoryException(Exception):
@@ -40,3 +40,6 @@ class History:
 
     def as_strings(self) -> List[str]:
         return list(map(repr, self.messages))
+
+    def as_dicts(self) -> List[Dict[str, str]]:
+        return list(map(lambda m: m.as_dict(), self.messages))

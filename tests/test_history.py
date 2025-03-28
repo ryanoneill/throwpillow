@@ -85,3 +85,18 @@ def test_history_multiple_as_strings():
     assert result[0] == repr(message1)
     assert result[1] == repr(message2)
 
+def test_history_empty_as_dicts():
+    history = History()
+    result = history.as_dicts()
+    assert result == []
+
+def test_history_multiple_as_dicts():
+    message1 = UserMessage("Something here")
+    message2 = ClaudeMessage("Another thing")
+    messages = [message1, message2]
+    history = History(messages)
+    result = history.as_dicts()
+    assert len(result) == 2
+    assert result[0] == message1.as_dict()
+    assert result[1] == message2.as_dict()
+
