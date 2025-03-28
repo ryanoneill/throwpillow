@@ -1,4 +1,8 @@
+from typing import TypedDict, cast
 from anthropic import Anthropic
+from anthropic.types import MessageParam
+from .history import History
+from .message import Message
 
 class Client:
     def __init__(self):
@@ -23,3 +27,18 @@ class Client:
         # TODO: Deal with errors
         # TODO: Deal with different types of ContentBlocks.
         return response.content[0].text
+
+    # Experimental
+    def converse(self, history: History) -> str:
+        def convert(message: Message) -> MessageParam:
+            result: MessageParam = cast(MessageParam, message.as_dict())
+            return result
+        messages = list(map(convert, history))
+        response = self.inner.messages.create(
+            model = self.model,
+            max_tokens = self.max_tokens,
+            messages = messages
+        )
+
+        return response.content[0].text
+
