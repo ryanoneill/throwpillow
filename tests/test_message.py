@@ -39,3 +39,21 @@ def test_user_message_repr_matches_format():
 def test_claude_message_repr_matches_format():
     message: Message = ClaudeMessage("whatever")
     assert repr(message) == '{"role": "assistant", "content": "whatever"}'
+
+def test_user_message_as_dict():
+    message: Message = UserMessage("how are you?")
+    map = message.as_dict()
+    assert len(map) == 2
+    assert "role" in map
+    assert map["role"] == "user"
+    assert "content" in map
+    assert map["content"] == "how are you?"
+
+def test_claude_message_as_dict():
+    message: Message = ClaudeMessage("Good. Thank you.")
+    map = message.as_dict()
+    assert len(map) == 2
+    assert "role" in map
+    assert map["role"] == "assistant"
+    assert "content" in map
+    assert map["content"] == "Good. Thank you."

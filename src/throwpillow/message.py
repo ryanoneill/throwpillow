@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Dict
 
 class Message(ABC):
     @abstractmethod
@@ -8,6 +9,9 @@ class Message(ABC):
 
     def __repr__(self) -> str:
         return f'{{"role": "{self.role}", "content": "{self.content}"}}'
+
+    def as_dict(self) -> Dict[str, str]:
+        return {"role": self.role, "content": self.content}
 
 class UserMessage(Message):
     def __init__(self, content: str):
