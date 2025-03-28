@@ -37,3 +37,6 @@ class History:
 
     def __getitem__(self, index: int) -> Message:
         return self.messages[index]
+
+    def as_strings(self) -> List[str]:
+        return list(map(repr, self.messages))

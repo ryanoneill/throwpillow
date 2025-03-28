@@ -67,3 +67,21 @@ def test_history_creation_two_messages_bad():
     items: List[Message] = [message1, message2]
     with pytest.raises(HistoryException):
         History(items)
+
+# Conversion
+
+def test_history_empty_as_strings():
+    history = History()
+    result = history.as_strings()
+    assert result == []
+
+def test_history_multiple_as_strings():
+    message1 = UserMessage("Something here")
+    message2 = ClaudeMessage("Another thing")
+    messages = [message1, message2]
+    history = History(messages)
+    result = history.as_strings()
+    assert len(result) == 2
+    assert result[0] == repr(message1)
+    assert result[1] == repr(message2)
+
